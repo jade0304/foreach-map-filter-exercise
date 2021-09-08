@@ -42,13 +42,13 @@ Examples:
     showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
 
 */
-let firstNames = ['colt','matt', 'tim', 'test']
+let firstNames = ["colt", "matt", "tim", "test"];
 
 function showFirstAndLast(arr) {
-    let firstAndLast = [];
+  let firstAndLast = [];
   arr.forEach(function (val) {
-      firstAndLast.push(val[0] + val[val.length - 1]);
-  }); 
+    firstAndLast.push(val[0] + val[val.length - 1]);
+  });
   return firstAndLast;
 }
 
@@ -61,7 +61,19 @@ Examples:
     // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 */
-function addKeyAndValue(arr, key, value) {}
+let instructors = [
+  { name: "Elie" },
+  { name: "Tim" },
+  { name: "Matt" },
+  { name: "Colt" },
+];
+
+function addKeyAndValue(arr, key, value) {
+  arr.forEach(function (val) {
+    val[key] = value;
+  });
+  return arr;
+}
 
 /*
 Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
@@ -73,7 +85,25 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
-function vowelCount(str) {}
+let str = "I Am awesome and so are you";
+
+function vowelCount(str) {
+  let obj = {};
+  let splitArr = str.split("");
+  const vowels = "aeiou";
+
+  splitArr.forEach(function (letter) {
+    const lowerCasedLetter = letter.toLowerCase();
+    if (vowels.indexOf(lowerCasedLetter) !== -1) {
+      if (obj[lowerCasedLetter]) {
+        obj[lowerCasedLetter]++;
+      } else {
+        obj[lowerCasedLetter] = 1;
+      }
+    }
+  });
+  return obj;
+}
 
 /*
 Write a function called doubleValuesWithMap which accepts an array and returns a new array with all the values in the array passed to the function doubled
@@ -83,7 +113,12 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    const doubleValue = [];
+    arr.map(function(val){
+        doubleValue.push(val * 2)
+    }); return doubleValue;
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
